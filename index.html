@@ -59,6 +59,47 @@
             width: 100%;
         }
         
+        /* Store link special styling */
+        .store-link {
+            position: relative;
+            background: linear-gradient(135deg, #ec407a 0%, #3b82f6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
+        .store-link::after {
+            background: linear-gradient(135deg, #ec407a 0%, #3b82f6 100%);
+        }
+        
+        .store-link::before {
+            content: '🔜';
+            position: absolute;
+            top: -8px;
+            right: -20px;
+            font-size: 0.7rem;
+            background: linear-gradient(135deg, #ec407a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: normal;
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Mobile store link styling */
+        .mobile-nav-link.store-link::before {
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
         /* Enhanced smooth scrolling */
         html {
             scroll-behavior: smooth;
@@ -324,6 +365,7 @@
                 <a href="#hero" class="nav-link text-gray-700 hover:text-pink-500">Home</a>
                 <a href="#about" class="nav-link text-gray-700 hover:text-pink-500">About</a>
                 <a href="#products" class="nav-link text-gray-700 hover:text-pink-500">Products</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-pink-500 store-link" onclick="showComingSoonAlert(event)">Store</a>
                 <a href="#info" class="nav-link text-gray-700 hover:text-pink-500">Quality</a>
                 <a href="#testimonials" class="nav-link text-gray-700 hover:text-pink-500">Reviews</a>
                 <a href="#faq" class="nav-link text-gray-700 hover:text-pink-500">FAQ</a>
@@ -339,6 +381,7 @@
             <a href="#hero" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100">Home</a>
             <a href="#about" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100">About</a>
             <a href="#products" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100">Products</a>
+            <a href="#" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100 store-link" onclick="showComingSoonAlert(event)">Store</a>
             <a href="#info" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100">Quality</a>
             <a href="#testimonials" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2 border-b border-gray-100">Reviews</a>
             <a href="#faq" class="mobile-nav-link block text-gray-700 hover:text-pink-500 py-2">FAQ</a>
@@ -355,14 +398,14 @@
                         Wholesome Treats for <span class="text-pink-500 bg-gradient-to-r from-pink-500 to-pink-600 bg-clip-text text-transparent">Happy Tails!</span>
                     </h1>
                     <p class="text-xl hero-subtitle mb-6 md:mb-8">
-                        Crafted with care, our all-natural, vet-approved dog treats are made to delight your furry companion. From crunchy bites to special pupcakes, Hearty_Hounds delivers love in every treat — because your dog deserves the very best, every day.
+                        Crafted with care, our all-natural, Pet-care quality dog treats are made to delight your furry companion. From crunchy bites to special pupcakes, Hearty_Hounds delivers love in every treat — because your dog deserves the very best, every day.
                     </p>
                     
                     <!-- Trust Badges -->
                     <div class="trust-badges justify-center md:justify-start">
                         <div class="trust-badge">
                             <span>✅</span>
-                            <span>Vet Approved</span>
+                            <span>Pet-care quality</span>
                         </div>
                         <div class="trust-badge">
                             <span>🌿</span>
@@ -418,8 +461,8 @@
                         </div>
                         <div class="bg-pink-50 p-6 rounded-xl text-center shadow-md hover:shadow-lg transition-shadow">
                             <i class="fas fa-heartbeat text-3xl text-blue-500 mb-3"></i>
-                            <h3 class="font-bold text-gray-800 mb-2">Vet Recommended</h3>
-                            <p class="text-gray-600 text-sm">Approved by veterinary professionals</p>
+                            <h3 class="font-bold text-gray-800 mb-2">Pet-care quality</h3>
+                            <p class="text-gray-600 text-sm">Formulated using veterinary best practices</p>
                         </div>
                         <div class="bg-blue-50 p-6 rounded-xl text-center shadow-md hover:shadow-lg transition-shadow">
                             <i class="fas fa-leaf text-3xl text-pink-500 mb-3"></i>
@@ -738,7 +781,7 @@
                 Don't just take our word for it - hear what our customers have to say
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card bg-white p-8 rounded-xl shadow-md transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
@@ -810,6 +853,78 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "I ordered very last minute Christmas treats which were delivered on time in beautiful boxes. The dogs absolutely loved them and it kept them both busy on Christmas Day and beyond!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-green-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-user text-green-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Gill Jones</h3>
+                            <p class="text-gray-500 text-sm">January 2, 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "Great service and treats! My dog was gifted some treats and this is how I found out about Hearty Hounds. Hendrix (my dog) loved them so much that I went to order treats - incredible last minute. Hearty Hounds was incredibly accommodating and made 4 great treat packages for our fur babies, so that they wouldn't go without. Totally recommend and will order again for sure 👍"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-purple-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-user text-purple-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Dulcie Edwards</h3>
+                            <p class="text-gray-500 text-sm">December 29, 2020</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "Hearty Hounds made an absolutely fantastic cake for our 'little' puppy's first birthday. Service was excellent & cake amazing....Fonzy couldn't wait to get stuck in! Thankyou so much, we'll be ordering again 🐶🐾"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-orange-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-user text-orange-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Jane N Loz</h3>
+                            <p class="text-gray-500 text-sm">September 10, 2020</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -822,7 +937,7 @@
             <div class="space-y-4">
                 <div class="accordion border-b border-gray-200 pb-4">
                     <button class="accordion-btn flex justify-between items-center w-full text-left font-bold text-gray-800 hover:text-pink-500 transition-colors">
-                        <span>Are your treats vet-approved?</span>
+                        <span>Are your treats Pet-care quality?</span>
                         <i class="fas fa-plus text-pink-500"></i>
                     </button>
                     <div class="accordion-content mt-2 text-gray-600">
@@ -882,7 +997,7 @@
                 <!-- Left Side - Social Media Cards -->
                 <div class="lg:w-1/2 flex flex-col sm:flex-row gap-6 justify-center">
                     <!-- Instagram Card -->
-                    <a href="#" target="_blank" class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group flex-1 max-w-xs">
+                    <a href="https://www.instagram.com/hearty_hounds" target="_blank" class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group flex-1 max-w-xs">
                         <div class="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                             <i class="fab fa-instagram text-white text-2xl"></i>
                         </div>
@@ -892,7 +1007,7 @@
                     </a>
                     
                     <!-- Facebook Card -->
-                    <a href="#" target="_blank" class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group flex-1 max-w-xs">
+                    <a href="https://www.facebook.com/HeartyHoundsDogTreats/reviews" target="_blank" class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group flex-1 max-w-xs">
                         <div class="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                             <i class="fab fa-facebook-f text-white text-2xl"></i>
                         </div>
@@ -976,7 +1091,7 @@
                         Bringing joy to dogs and their humans through wholesome, delicious treats made with love.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-blue-600 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                        <a href="https://www.facebook.com/HeartyHoundsDogTreats/reviews" target="_blank" class="bg-blue-600 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="bg-pink-500 hover:bg-pink-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
@@ -1141,6 +1256,11 @@
         // Enhanced smooth scrolling for nav links
         document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
+                // Skip preventDefault for store links as they have their own handler
+                if (this.classList.contains('store-link')) {
+                    return;
+                }
+                
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -1156,6 +1276,62 @@
                 }
             });
         });
+        
+        // Coming Soon Alert Function
+        function showComingSoonAlert(event) {
+            event.preventDefault();
+            
+            // Create a custom styled alert
+            const alertDiv = document.createElement('div');
+            alertDiv.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" id="custom-alert">
+                    <div class="bg-white rounded-xl p-8 max-w-md mx-4 text-center shadow-2xl transform transition-all duration-300 scale-95">
+                        <div class="mb-4">
+                            <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-store text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Store Coming Soon!</h3>
+                            <p class="text-gray-600 mb-6">We're working hard to bring you an amazing online shopping experience with Dog Food, Accessories, and more treats!</p>
+                            <div class="flex items-center justify-center space-x-2 text-pink-500 mb-4">
+                                <i class="fas fa-bone"></i>
+                                <span class="font-semibold">Dog Food</span>
+                                <span class="text-gray-400">•</span>
+                                <span class="font-semibold">Accessories</span>
+                                <span class="text-gray-400">•</span>
+                                <span class="font-semibold">More Treats</span>
+                                <i class="fas fa-bone"></i>
+                            </div>
+                        </div>
+                        <button onclick="closeCustomAlert()" class="bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                            Got it! 🐾
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                const modal = alertDiv.querySelector('div > div');
+                modal.classList.remove('scale-95');
+                modal.classList.add('scale-100');
+            }, 10);
+        }
+        
+        // Close custom alert function
+        function closeCustomAlert() {
+            const alert = document.getElementById('custom-alert');
+            if (alert) {
+                const modal = alert.querySelector('div > div');
+                modal.classList.remove('scale-100');
+                modal.classList.add('scale-95');
+                
+                setTimeout(() => {
+                    alert.remove();
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>

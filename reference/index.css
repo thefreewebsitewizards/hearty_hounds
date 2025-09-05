@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Style select dropdown options for better readability */
+select option {
+  background-color: #1f2937;
+  color: white;
+  padding: 8px;
+}
+
+select option:hover {
+  background-color: #374151;
+}
+
+/* Custom animations for About page */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;500&display=swap');
+
+body {
+  font-family: 'Lora', serif;
+  color: #2C2C2C;
+  background-color: #FAF8F5;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: #A6BBA2;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #D9A273;
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #A6BBA2, 0 0 0 4px rgba(166, 187, 162, 0.1);
+}
+
+.btn-secondary {
+  background-color: #F1ECE7;
+  color: #2C2C2C;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #A6BBA2;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #D9A273;
+  color: white;
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #A6BBA2, 0 0 0 4px rgba(166, 187, 162, 0.1);
+}
+
+.card {
+  background-color: #F1ECE7;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(44, 44, 44, 0.1), 0 1px 2px 0 rgba(44, 44, 44, 0.06);
+  border: 1px solid #A6BBA2;
+  overflow: hidden;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #A6BBA2;
+  border-radius: 0.375rem;
+  background-color: #FAF8F5;
+  color: #2C2C2C;
+  box-shadow: 0 1px 2px 0 rgba(44, 44, 44, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #D9A273;
+  box-shadow: 0 0 0 2px rgba(217, 162, 115, 0.1);
+}

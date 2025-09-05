@@ -1,0 +1,101 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read and write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Products are readable by all, writable by admins only
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Orders are readable by the customer who placed them or admins
+    match /orders/{orderId} {
+      allow read: if request.auth != null && 
+        (resource.data.customerId == request.auth.uid ||
+         resource.data.customerEmail == request.auth.token.email ||
+         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'));
+      
+      // Orders are created by Cloud Functions only
+      allow create: if false;
+      
+      // Orders can be updated by admins for status changes
+      allow update: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' &&
+        // Only allow updating specific fields
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'shippedAt', 'deliveredAt', 'trackingNumber']);
+    }
+    
+    // Cart items are readable and writable by the owner
+    match /carts/{userId}/items/{itemId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Shipping rates are readable by authenticated users
+    match /shippingRates/{rateId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Created by Cloud Functions only
+    }
+    
+    // Error logs are write-only by Cloud Functions
+    match /errorLogs/{logId} {
+      allow read: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow write: if false; // Created by Cloud Functions only
+    }
+    
+    // Email queue is managed by Cloud Functions only
+    match /emailQueue/{emailId} {
+      allow read, write: if false; // Cloud Functions only
+    }
+    
+    // Connected accounts (Stripe Connect) - readable by account owner and admins
+    match /connectedAccounts/{accountId} {
+      allow read: if request.auth != null && 
+        (resource.data.userId == request.auth.uid ||
+         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'));
+      
+      allow write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Analytics and metrics - admin only
+    match /analytics/{docId} {
+      allow read, write: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Inventory tracking
+    match /inventory/{productId} {
+      allow read: if true;
+      allow write: if false; // Updated by Cloud Functions only
+    }
+    
+    // Reviews and ratings
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if request.auth != null && 
+        (request.auth.uid == resource.data.userId ||
+         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'));
+    }
+    
+    // Webhooks log - Cloud Functions only
+    match /webhooks/{webhookId} {
+      allow read: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow write: if false; // Cloud Functions only
+    }
+  }
+}

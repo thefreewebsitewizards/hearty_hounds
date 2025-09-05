@@ -1,0 +1,39 @@
+{
+  "name": "hearty-hounds-functions",
+  "version": "1.0.0",
+  "description": "Firebase Cloud Functions for Hearty Hounds payment processing",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "node deploy.js deploy",
+    "deploy:setup": "node deploy.js setup",
+    "deploy:single": "node deploy.js deploy-single",
+    "emulator": "node deploy.js emulator",
+    "logs": "firebase functions:log",
+    "config": "node deploy.js config",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^5.1.0",
+    "stripe": "^14.15.0",
+    "shippo": "^1.7.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21"
+  },
+  "private": true
+}

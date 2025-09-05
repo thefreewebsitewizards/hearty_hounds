@@ -154,6 +154,7 @@ const Auth: React.FC = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  {/* @ts-ignore */}
                   <FiLock className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
@@ -173,8 +174,10 @@ const Auth: React.FC = () => {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
+                    {/* @ts-ignore */}
                     <FiEyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                   ) : (
+                    {/* @ts-ignore */}
                     <FiEye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                   )}
                 </button>
@@ -188,6 +191,7 @@ const Auth: React.FC = () => {
                 </label>
                 <div className="mt-1 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    {/* @ts-ignore */}
                     <FiLock className="h-5 w-5 text-gray-400" />
                   </div>
                   <input

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiShoppingCart } from 'react-icons/fi';
+import { ArrowRight, ShoppingCart } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { Product } from '../utils/types';
 import { getFeaturedProducts } from '../services/productService';
@@ -321,8 +321,7 @@ const Home: React.FC = () => {
                   className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover-glow"
                 >
                   View All Products
-                  {/* @ts-ignore */}
-                  <FiArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
               </AnimatedElement>
             </>
@@ -338,8 +337,7 @@ const Home: React.FC = () => {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Browse All Products
-                {/* @ts-ignore */}
-                <FiArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           )}
@@ -438,8 +436,7 @@ const Home: React.FC = () => {
                   to="/gallery"
                   className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover-glow"
                 >
-                  {/* @ts-ignore */}
-                  <FiShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="h-5 w-5" />
                   Shop Now
                 </Link>
                 <Link
@@ -447,8 +444,7 @@ const Home: React.FC = () => {
                   className="inline-flex items-center gap-2 px-10 py-4 border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white rounded-full font-bold text-lg transition-all duration-300"
                 >
                   View Featured
-                  {/* @ts-ignore */}
-                  <FiArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
               </div>
             </AnimatedElement>

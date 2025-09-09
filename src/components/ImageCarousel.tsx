@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -166,16 +166,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-200 z-20"
               aria-label="Previous image"
             >
-              {/* @ts-ignore */}
-              <FiChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-6 w-6" />
             </button>
             <button
               onClick={goToNext}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-200 z-20"
               aria-label="Next image"
             >
-              {/* @ts-ignore */}
-              <FiChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-6 w-6" />
             </button>
           </>
         )}

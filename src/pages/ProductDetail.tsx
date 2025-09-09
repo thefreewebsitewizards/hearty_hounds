@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FiArrowLeft, FiShoppingCart, FiHeart, FiShare2, FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
+import { ArrowLeft, ShoppingCart, Heart, Share2, Truck, Shield, RotateCcw } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
 import { Product } from '../utils/types';
 import { getProductById } from '../services/productService';
@@ -179,8 +179,7 @@ const ProductDetail: React.FC = () => {
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-6 transition-colors"
         >
-          {/* @ts-ignore */}
-          <FiArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           Back
         </button>
 
@@ -304,8 +303,7 @@ const ProductDetail: React.FC = () => {
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
-                  {/* @ts-ignore */}
-                  <FiShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="h-5 w-5" />
                   {product.inStock ? 'Add to Cart' : 'Out of Stock'}
                 </button>
                 
@@ -317,16 +315,14 @@ const ProductDetail: React.FC = () => {
                       : 'border-gray-300 text-gray-600 hover:border-gray-400'
                   }`}
                 >
-                  {/* @ts-ignore */}
-                  <FiHeart className={`h-5 w-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                  <Heart className={`h-5 w-5 ${isWishlisted ? 'fill-current' : ''}`} />
                 </button>
                 
                 <button
                   onClick={handleShare}
                   className="px-4 py-3 rounded-lg border border-gray-300 text-gray-600 hover:border-gray-400 transition-colors"
                 >
-                  {/* @ts-ignore */}
-                  <FiShare2 className="h-5 w-5" />
+                  <Share2 className="h-5 w-5" />
                 </button>
               </div>
               
@@ -342,24 +338,21 @@ const ProductDetail: React.FC = () => {
             <div className="border-t border-gray-200 pt-6">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center gap-2">
-                  {/* @ts-ignore */}
-                  <FiTruck className="h-6 w-6 text-blue-600" />
+                  <Truck className="h-6 w-6 text-blue-600" />
                   <div>
                     <div className="text-sm font-medium text-gray-900">Free Shipping</div>
                     <div className="text-xs text-gray-600">On orders over $100</div>
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  {/* @ts-ignore */}
-                  <FiShield className="h-6 w-6 text-green-600" />
+                  <Shield className="h-6 w-6 text-green-600" />
                   <div>
                     <div className="text-sm font-medium text-gray-900">Secure Payment</div>
                     <div className="text-xs text-gray-600">SSL encrypted</div>
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  {/* @ts-ignore */}
-                  <FiRefreshCw className="h-6 w-6 text-purple-600" />
+                  <RotateCcw className="h-6 w-6 text-purple-600" />
                   <div>
                     <div className="text-sm font-medium text-gray-900">Easy Returns</div>
                     <div className="text-xs text-gray-600">30-day policy</div>

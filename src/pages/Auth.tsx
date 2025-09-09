@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { FiEye, FiEyeOff, FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 
 const Auth: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -108,8 +108,7 @@ const Auth: React.FC = () => {
                 </label>
                 <div className="mt-1 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    {/* @ts-ignore */}
-                    <FiUser className="h-5 w-5 text-gray-400" />
+                    <User className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
                     id="displayName"
@@ -131,8 +130,7 @@ const Auth: React.FC = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  {/* @ts-ignore */}
-                  <FiMail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
                   id="email"
@@ -154,8 +152,7 @@ const Auth: React.FC = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  {/* @ts-ignore */}
-                  <FiLock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
                   id="password"
@@ -173,11 +170,10 @@ const Auth: React.FC = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
-                  {/* @ts-ignore */}
                   {showPassword ? (
-                    <FiEyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                   ) : (
-                    <FiEye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                   )}
                 </button>
               </div>
@@ -190,8 +186,7 @@ const Auth: React.FC = () => {
                 </label>
                 <div className="mt-1 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    {/* @ts-ignore */}
-                    <FiLock className="h-5 w-5 text-gray-400" />
+                    <Lock className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
                     id="confirmPassword"
